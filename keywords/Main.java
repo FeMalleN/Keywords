@@ -18,8 +18,8 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         while (keys.size() != 0) {
             System.out.println("Enter the keyword or \"help\" for hint!");
-           String a = sc.nextLine();
-            if (a.equals("help") || a.equals("Help")) {
+            String a = sc.nextLine();
+            if (a.equals("help") || a.equals("Help")) {                             //check on help and output hint
                 String word = keys.getFirst();
                 word = word.substring(0, word.length() / 2);
                 char star = '*';
@@ -30,27 +30,27 @@ public class Main {
                 }
                 System.out.println(word + stars);
             } else {
-                if (keys.contains(a)) {
+                if (keys.contains(a)) {                                             //check on true answer
                     answer.add(a);
                     keys.remove(a);
                 } else {
-                    if (answer.contains(a)) {
+                    if (answer.contains(a)) {                                       //check on repeat word
                         System.out.println("The word is already guessed");
                     } else
                         System.out.println("The word is not right");
                 }
-                    System.out.println("Remained words: " + keys.size());
-                    Collections.sort(answer, new Comparator<String>() {
-                        @Override
-                        public int compare(String o1, String o2) {
-                            return Collator.getInstance().compare(o1, o2);
-                        }
-                    });
-                    System.out.println("The guessed words: " + answer);
-                     System.out.println();
-                }
+                System.out.println("Remained words: " + keys.size());
+                Collections.sort(answer, new Comparator<String>() {         //sorting our answers
+                    @Override
+                    public int compare(String o1, String o2) {
+                        return Collator.getInstance().compare(o1, o2);
+                    }
+                });
+                System.out.println("The guessed words: " + answer);
+                System.out.println();
             }
-            System.out.println("We congratulate, you guessed all words!!");
-            sc.close();
         }
+        System.out.println("We congratulate, you guessed all words!!");
+        sc.close();
     }
+}
